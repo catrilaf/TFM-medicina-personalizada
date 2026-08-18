@@ -1,0 +1,18 @@
+{
+  "dataset_title": "Chemotherapy Regimens Based on Patient Data",
+  "kaggle_ref": "omenkj/chemotherapy-regimens-based-on-patient-data",
+  "kaggle_url": "https://www.kaggle.com/datasets/omenkj/chemotherapy-regimens-based-on-patient-data",
+  "owner": "OmenKj",
+  "version": 1,
+  "last_updated_utc": "2025-02-22T09:31:15.617Z",
+  "license": "Apache 2.0",
+  "raw_filename": "chemotherapy_patient_data.csv",
+  "raw_rows": 52321,
+  "raw_columns": 17,
+  "raw_bytes": 4351306,
+  "raw_sha256": "7809afd664be251e882ce02d4c843fd26a7765c0a921192cadfe11c37b2db6f2",
+  "verification_date": "2026-07-24",
+  "verification_result": "El archivo aportado coincide byte a byte con el CSV descargado mediante la API de Kaggle para la versión 1.",
+  "clinical_provenance_status": "No verificada",
+  "clinical_provenance_note": "Kaggle no identifica institución, protocolo de recogida, aprobación ética, criterios de inclusión ni mecanismo de generación. La coincidencia técnica del archivo no demuestra que los registros procedan de pacientes reales."
+}
