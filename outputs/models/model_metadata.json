@@ -1,0 +1,128 @@
+{
+  "generated_on": "2026-08-18",
+  "seed": 42,
+  "target": "chemotherapy_regimen",
+  "features": [
+    "age",
+    "sex",
+    "bmi",
+    "smoking_status",
+    "cancer_type",
+    "genetic_mutation",
+    "tumor_stage",
+    "tumor_size_cm",
+    "metastasis_status"
+  ],
+  "classes": [
+    "ABVD",
+    "CHOP",
+    "FOLFOX",
+    "Gemcitabine"
+  ],
+  "selected_model": "Random Forest",
+  "selection_criterion": "Mayor F1 macro medio en CV repetida entre modelos no Dummy",
+  "cv_f1_macro_mean": 0.2520542043967347,
+  "cv_f1_macro_std": 0.005103017076613396,
+  "cv_balanced_accuracy_mean": 0.25254761558516137,
+  "delta_f1_vs_dummy_stratified": -0.0004447611194078882,
+  "holdout_metrics": {
+    "accuracy": 0.2543803247066388,
+    "balanced_accuracy": 0.24990926957289963,
+    "precision_macro": 0.2500122466543028,
+    "recall_macro": 0.24990926957289963,
+    "f1_macro": 0.2495975280189324,
+    "f1_weighted": 0.25571370839453234,
+    "mcc": 0.0002747251966972194,
+    "log_loss": 1.3886717726177495,
+    "brier_multiclase": 0.751292012925425,
+    "top2_accuracy": 0.5106092268124096,
+    "confianza_media": 0.2809092336806525
+  },
+  "holdout_intervals_95": {
+    "f1_macro": [
+      0.24201436753615654,
+      0.2567767169169439
+    ],
+    "balanced_accuracy": [
+      0.24223630817387573,
+      0.2571296644976978
+    ]
+  },
+  "paired_cv_vs_dummy_stratified": {
+    "delta_f1_macro_mean": -0.0004447611194079437,
+    "ci95": [
+      -0.006389413812727706,
+      0.0049709967798533036
+    ],
+    "p_wilcoxon": 0.921875
+  },
+  "ece_top_label": 0.026528908974013735,
+  "holdout_label_randomization": {
+    "p_value_one_sided": 0.4991001799640072,
+    "null_f1_mean": 0.24960905767630653,
+    "n_permutations": 5000
+  },
+  "probabilistic_skill_vs_prevalence": {
+    "brier_skill": -0.011800282443850119,
+    "log_loss_gain": -0.01699444366270897
+  },
+  "learning_curve_final_validation_f1": 0.24997503514238148,
+  "abstention_threshold": 0.45,
+  "abstention_threshold_status": "Umbral ilustrativo de seguridad; no optimizado ni validado clínicamente.",
+  "holdout_abstention_rate": 1.0,
+  "evidence_conclusion": "No se demuestra señal predictiva útil: F1 macro y balanced accuracy son equivalentes al azar.",
+  "use_restriction": "Prototipo académico. No prescribe ni recomienda tratamientos.",
+  "data_provenance": "Archivo y licencia verificados contra Kaggle v1; procedencia clínica, institución, protocolo y naturaleza real o sintética no acreditados.",
+  "category_values": {
+    "sex": [
+      "Female",
+      "Male"
+    ],
+    "smoking_status": [
+      "Current",
+      "Former",
+      "Never"
+    ],
+    "cancer_type": [
+      "Breast",
+      "Colon",
+      "Leukemia",
+      "Lung",
+      "Lymphoma"
+    ],
+    "genetic_mutation": [
+      "BRCA1",
+      "EGFR",
+      "KRAS",
+      "Not_reported",
+      "TP53"
+    ],
+    "tumor_stage": [
+      "I",
+      "II",
+      "III",
+      "IV"
+    ],
+    "metastasis_status": [
+      "No",
+      "Yes"
+    ]
+  },
+  "numeric_ranges": {
+    "age": {
+      "min": 30.0,
+      "max": 84.0,
+      "median": 57.0
+    },
+    "bmi": {
+      "min": 18.5,
+      "max": 35.0,
+      "median": 26.8
+    },
+    "tumor_size_cm": {
+      "min": 1.0,
+      "max": 10.0,
+      "median": 5.5
+    }
+  }
+}
