@@ -1,0 +1,32 @@
+variable,tipo,rol_tfm,descripcion,valores_unicos_o_rango
+patient_id,string,identificador,Identificador del registro; no debe usarse como predictor.,"['P00001', 'P00002', 'P00003', 'P00004', 'P00005', 'P00006', 'P00007', 'P00008', 'P00009', 'P00010']"
+age,int64,predictor_pretratamiento,Edad del paciente en años.,30 - 84
+age_group,object,predictor_derivado,Categoría de edad creada para segmentación clínica-operativa.,"['65-74', '>=75', '50-64', '<50']"
+sex,string,predictor_pretratamiento,Sexo registrado.,"['Male', 'Female']"
+bmi,float64,predictor_pretratamiento,Índice de masa corporal.,18.5 - 35.0
+bmi_category,object,predictor_derivado,"Categoría IMC: normopeso, sobrepeso u obesidad.","['Obesidad', 'Sobrepeso', 'Normopeso']"
+smoking_status,string,predictor_pretratamiento,Estado tabáquico.,"['Former', 'Never', 'Current']"
+cancer_type,string,predictor_pretratamiento,Tipo de cáncer registrado.,"['Breast', 'Lung', 'Lymphoma', 'Colon', 'Leukemia']"
+genetic_mutation,string,predictor_pretratamiento_imputado,Mutación genética reportada; faltantes imputados como Not_reported.,"['BRCA1', 'KRAS', 'EGFR', 'TP53', 'Not_reported']"
+tumor_stage,string,predictor_pretratamiento,Estadio tumoral I-IV.,"['II', 'I', 'IV', 'III']"
+tumor_stage_numeric,Int64,predictor_derivado_ordinal,"Codificación ordinal del estadio: I=1, II=2, III=3, IV=4.",1 - 4
+tumor_size_cm,float64,predictor_pretratamiento,"Tamaño tumoral, interpretado en centímetros según nombre operativo del dataset.",1.0 - 10.0
+metastasis_status,string,predictor_pretratamiento,Presencia de metástasis.,"['No', 'Yes']"
+metastasis_binary,Int64,predictor_derivado_binario,"Codificación binaria de metástasis: Yes=1, No=0.",0 - 1
+clinical_risk_group,object,predictor_derivado,"Estrato clínico derivado según estadio, metástasis y tamaño tumoral.","['Intermedio', 'Alto', 'Bajo']"
+frailty_risk_pre,object,predictor_derivado_pretratamiento,Riesgo basal pretratamiento aproximado por edad e IMC.,"['Intermedio', 'Alto', 'Bajo']"
+chemotherapy_regimen,string,target_principal_recomendador,Régimen de quimioterapia registrado. Variable objetivo para recomendación.,"['FOLFOX', 'CHOP', 'ABVD', 'Gemcitabine', 'Not_recorded']"
+chemotherapy_regimen_missing,int64,flag_calidad,Flag de régimen faltante en archivo original.,0 - 1
+dosage_mg_m2,float64,variable_post_tratamiento_no_predictora_principal,Dosis registrada; se excluye del modelo principal por ser posterior a la decisión terapéutica.,50.0 - 600.0
+cycles_completed,int64,variable_post_tratamiento_no_predictora_principal,Ciclos completados; no usar como predictor principal por leakage temporal.,1 - 7
+nausea_severity,int64,outcome_seguridad_no_predictor_principal,Severidad de náusea; outcome de seguridad.,1 - 5
+neutropenia,string,outcome_seguridad_no_predictor_principal,Neutropenia observada; outcome de seguridad.,"['Yes', 'No']"
+neutropenia_binary,Int64,outcome_seguridad_derivado,Neutropenia codificada como binaria.,0 - 1
+severe_toxicity_observed,int64,outcome_seguridad_derivado,Toxicidad severa observada: neutropenia o náusea >=4.,0 - 1
+tumor_response,string,outcome_efectividad_no_predictor_principal,Respuesta tumoral observada.,"['Stable', 'Partial', 'Progressive', 'Complete']"
+response_favorable,int64,outcome_efectividad_derivado,Respuesta favorable: Complete o Partial.,0 - 1
+progressive_disease,int64,outcome_efectividad_derivado,Enfermedad progresiva observada.,0 - 1
+overall_survival_months,int64,outcome_supervivencia_no_predictor_principal,Supervivencia global en meses.,6 - 119
+survival_12m,int64,outcome_supervivencia_derivado,Supervivencia >=12 meses.,0 - 1
+survival_24m,int64,outcome_supervivencia_derivado,Supervivencia >=24 meses.,0 - 1
+record_quality_for_recommender,object,flag_calidad,Indica si el registro tiene target de régimen conocido.,"['complete_for_recommender', 'missing_target_regimen']"
