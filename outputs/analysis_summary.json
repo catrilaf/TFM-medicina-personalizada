@@ -1,0 +1,34 @@
+{
+  "dataset_rows_clean": 52321,
+  "dataset_rows_model_ready": 49765,
+  "selected_model": "Random Forest",
+  "cv_f1_macro_mean": 0.2520542043967347,
+  "cv_balanced_accuracy_mean": 0.25254761558516137,
+  "holdout_f1_macro": 0.2495975280189324,
+  "holdout_balanced_accuracy": 0.24990926957289963,
+  "holdout_f1_macro_ci95": [
+    0.24201436753615654,
+    0.2567767169169439
+  ],
+  "holdout_balanced_accuracy_ci95": [
+    0.24223630817387573,
+    0.2571296644976978
+  ],
+  "paired_cv_delta_f1_vs_dummy": -0.0004447611194079437,
+  "paired_cv_delta_f1_ci95": [
+    -0.006389413812727706,
+    0.0049709967798533036
+  ],
+  "ece_top_label": 0.026528908974013735,
+  "label_randomization_p_value": 0.4991001799640072,
+  "label_randomization_null_f1_mean": 0.24960905767630653,
+  "brier_skill_vs_prevalence": -0.011800282443850119,
+  "log_loss_gain_vs_prevalence": -0.01699444366270897,
+  "learning_curve_final_validation_f1": 0.24997503514238148,
+  "dummy_stratified_cv_f1_macro": 0.2524989655161426,
+  "delta_f1_vs_dummy": -0.0004447611194078882,
+  "abstention_rate_holdout": 1.0,
+  "best_k_clustering": 2,
+  "clustering_silhouette": 0.09779684839930171,
+  "evidence_conclusion": "No se demuestra señal predictiva útil: F1 macro y balanced accuracy son equivalentes al azar."
+}
