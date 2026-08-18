@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "Si reutiliza este repositorio académico, cite al autor y esta versión."
+title: "Sistema web de recomendación de tratamientos personalizados en oncología"
+type: software
+authors:
+  - family-names: "Catrilaf González"
+    given-names: "Enrique"
+repository-code: "https://github.com/catrilaf/TFM-medicina-personalizada"
+version: "1.0.0"
+date-released: "2026-08-18"
+abstract: >-
+  Pipeline reproducible de clasificación multiclase, auditoría de señal y
+  aplicación Streamlit con abstención segura. Prototipo académico sin
+  validación clínica.

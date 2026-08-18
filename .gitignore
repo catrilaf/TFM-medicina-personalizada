@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Entornos y configuración local
+.venv/
+venv/
+.env
+.env.*
+.streamlit/secrets.toml
+
+# Sistema y editores
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# La memoria y la presentación se depositan por separado
+*.doc
+*.docx
+*.pdf
+*.ppt
+*.pptx
+*.rtf
+~$*
+
+# Temporales
+tmp/
+qa/
