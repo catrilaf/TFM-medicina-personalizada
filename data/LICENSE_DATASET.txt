@@ -1,0 +1,14 @@
+Dataset: Chemotherapy Regimens Based on Patient Data
+Autor/propietario indicado por Kaggle: OmenKj
+Versión evaluada: 1
+Licencia indicada por Kaggle: Apache License 2.0
+
+Página del dataset:
+https://www.kaggle.com/datasets/omenkj/chemotherapy-regimens-based-on-patient-data
+
+Texto oficial de la licencia:
+https://www.apache.org/licenses/LICENSE-2.0
+
+Este aviso documenta la licencia publicada por Kaggle para la versión
+evaluada. No constituye una validación de la procedencia clínica, la
+representatividad de los registros ni la autorización para uso asistencial.
