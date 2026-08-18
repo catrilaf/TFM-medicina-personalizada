@@ -1,0 +1,9 @@
+indicador,valor
+Registros originales,52321
+Columnas originales,17
+Registros dataset limpio,52321
+Columnas dataset limpio,31
+Patient_ID duplicados,0
+Genetic_Mutation faltante imputado como Not_reported,5331
+Chemotherapy_Regimen faltante en original,2556
+Registros model-ready con régimen conocido,49765
