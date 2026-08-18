@@ -1,0 +1,4 @@
+control,n_registros,pct_registros,interpretacion
+Estadio IV sin metástasis registrada,5220,0.10489299708630563,Revisar semántica y procedencia; no corregir automáticamente.
+Estadio I con metástasis registrada,3699,0.07432934793529589,Combinación clínicamente atípica; requiere validación de dominio.
+Respuesta favorable y progresión simultáneas,0,0.0,Debe ser cero por definición de variables derivadas.

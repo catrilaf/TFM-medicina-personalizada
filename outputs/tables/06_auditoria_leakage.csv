@@ -1,0 +1,30 @@
+variable,rol_temporal,decision
+patient_id,Identificador,Excluir del modelado
+age,Pretratamiento,Incluir en el modelo principal
+age_group,Derivada de pretratamiento,Excluir del modelo principal por redundancia
+sex,Pretratamiento,Incluir en el modelo principal
+bmi,Pretratamiento,Incluir en el modelo principal
+bmi_category,Derivada de pretratamiento,Excluir del modelo principal por redundancia
+smoking_status,Pretratamiento,Incluir en el modelo principal
+cancer_type,Pretratamiento,Incluir en el modelo principal
+genetic_mutation,Pretratamiento,Incluir en el modelo principal
+tumor_stage,Pretratamiento,Incluir en el modelo principal
+tumor_stage_numeric,Derivada de pretratamiento,Excluir del modelo principal por redundancia
+tumor_size_cm,Pretratamiento,Incluir en el modelo principal
+metastasis_status,Pretratamiento,Incluir en el modelo principal
+metastasis_binary,Derivada de pretratamiento,Excluir del modelo principal por redundancia
+clinical_risk_group,Derivada de pretratamiento,Excluir del modelo principal por redundancia
+frailty_risk_pre,Derivada de pretratamiento,Excluir del modelo principal por redundancia
+chemotherapy_regimen,Variable objetivo,Usar únicamente como y
+dosage_mg_m2,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+cycles_completed,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+nausea_severity,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+neutropenia,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+neutropenia_binary,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+severe_toxicity_observed,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+tumor_response,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+response_favorable,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+progressive_disease,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+overall_survival_months,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+survival_12m,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal
+survival_24m,Posterior al tratamiento / desenlace,Excluir: riesgo de leakage temporal

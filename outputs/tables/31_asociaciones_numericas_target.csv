@@ -1,0 +1,4 @@
+variable,eta_cuadrado,p_value_kruskal,interpretacion,p_value_fdr_bh,significativo_fdr_005
+bmi,9.323039196619335e-05,0.19976423567162924,Efecto despreciable,0.3448999585369455,False
+tumor_size_cm,8.657891407801353e-05,0.229933305691297,Efecto despreciable,0.3448999585369455,False
+age,5.793766827874051e-06,0.9619968432480204,Efecto despreciable,0.9619968432480204,False

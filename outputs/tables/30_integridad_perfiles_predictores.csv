@@ -1,0 +1,8 @@
+indicador,valor,interpretacion
+Registros evaluados,49765,Unidad de análisis del model-ready
+Identificadores únicos,49765,Debe coincidir con los registros
+Perfiles predictores únicos,49763,Combinaciones exactas de las nueve entradas
+Filas pertenecientes a perfiles repetidos,4,Incluye todas las copias
+Perfiles repetidos,2,Combinaciones exactas presentes más de una vez
+Perfiles repetidos con etiquetas en conflicto,0,Un valor mayor que cero indicaría ambigüedad determinista del target
+Máximo de registros por perfil,2,Concentración máxima de una combinación exacta

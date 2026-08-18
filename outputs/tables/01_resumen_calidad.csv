@@ -1,0 +1,10 @@
+indicador,valor
+Registros del dataset limpio,52321
+Columnas del dataset limpio,31
+Registros con régimen conocido,49765
+Columnas del dataset model-ready,29
+Registros sin régimen en el dataset limpio,2556
+Valores faltantes en model-ready,0
+Patient ID duplicados,0
+Filas completamente duplicadas,0
+Clases de régimen,4

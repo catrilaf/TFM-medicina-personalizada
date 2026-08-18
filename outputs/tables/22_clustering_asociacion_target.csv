@@ -1,0 +1,2 @@
+variable_1,variable_2,cramers_v_corregido,p_value_chi2,interpretacion
+cluster,chemotherapy_regimen,0.0,0.5905883853295735,No valida utilidad clínica; solo mide asociación exploratoria.

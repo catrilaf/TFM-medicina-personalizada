@@ -1,0 +1,11 @@
+variable,cramers_v_corregido,p_value_chi2,interpretacion,p_value_fdr_bh,significativo_fdr_005
+clinical_risk_group,0.0071163836089075845,0.08713559247575707,Asociación despreciable,0.5903824531080668,False
+smoking_status,0.0038887599182090907,0.27663894419700263,Asociación despreciable,0.5903824531080668,False
+genetic_mutation,0.002482163320140408,0.37488127082155864,Asociación despreciable,0.5903824531080668,False
+cancer_type,0.0024008861984115143,0.37924174735329186,Asociación despreciable,0.5903824531080668,False
+sex,0.0,0.5313442077972601,Asociación despreciable,0.5903824531080668,False
+tumor_stage,0.0,0.46544929959226455,Asociación despreciable,0.5903824531080668,False
+metastasis_status,0.0,0.5020076281235466,Asociación despreciable,0.5903824531080668,False
+age_group,0.0,0.8477896396620163,Asociación despreciable,0.8477896396620161,False
+bmi_category,0.0,0.43538037987876,Asociación despreciable,0.5903824531080668,False
+frailty_risk_pre,0.0,0.4569704323713818,Asociación despreciable,0.5903824531080668,False

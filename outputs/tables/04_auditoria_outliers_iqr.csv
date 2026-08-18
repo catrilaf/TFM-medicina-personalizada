@@ -1,0 +1,4 @@
+variable,q1,q3,iqr,limite_inferior,limite_superior,n_fuera_iqr,decision
+age,43.0,71.0,28.0,1.0,113.0,0,Conservar; revisar con conocimiento clínico antes de excluir.
+bmi,22.6,30.9,8.299999999999997,10.150000000000006,43.349999999999994,0,Conservar; revisar con conocimiento clínico antes de excluir.
+tumor_size_cm,3.2,7.7,4.5,-3.55,14.45,0,Conservar; revisar con conocimiento clínico antes de excluir.
