@@ -30,14 +30,19 @@ REQUIRED_PATHS = [
     "memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf",
 ]
 
-EXPECTED = {
+EXPECTED_TEXT = {
     "selected_model": "Random Forest",
+    "evidence_conclusion": (
+        "No se demuestra señal predictiva útil: F1 macro y balanced accuracy "
+        "son equivalentes al azar."
+    ),
+}
+
+EXPECTED_CLOSE = {
     "cv_f1_macro_mean": 0.252054,
     "dummy_stratified_cv_f1_macro": 0.252499,
     "holdout_f1_macro": 0.249598,
     "holdout_balanced_accuracy": 0.249909,
-    "label_randomization_p_value": 0.499100,
-    "abstention_rate_holdout": 1.0,
 }
 
 
@@ -75,13 +80,25 @@ def check_metrics(errors: list[str]) -> None:
     if not summary_path.exists():
         return
     summary = json.loads(summary_path.read_text(encoding="utf-8"))
-    for key, expected in EXPECTED.items():
+    for key, expected in EXPECTED_TEXT.items():
         actual = summary.get(key)
-        if isinstance(expected, float):
-            if actual is None or not math.isclose(float(actual), expected, abs_tol=5e-7):
-                errors.append(f"Métrica incoherente {key}: {actual!r} != {expected!r}")
-        elif actual != expected:
+        if actual != expected:
             errors.append(f"Valor incoherente {key}: {actual!r} != {expected!r}")
+    for key, expected in EXPECTED_CLOSE.items():
+        actual = summary.get(key)
+        if actual is None or not math.isclose(float(actual), expected, abs_tol=0.005):
+            errors.append(
+                f"Métrica fuera de tolerancia {key}: {actual!r}; referencia {expected!r}"
+            )
+
+    p_value = float(summary.get("label_randomization_p_value", -1))
+    if not 0.05 <= p_value <= 1.0:
+        errors.append(f"La aleatorización contradice el NO-GO: p={p_value!r}")
+    if float(summary.get("abstention_rate_holdout", -1)) != 1.0:
+        errors.append("La tasa de abstención del holdout debe ser 1,0")
+    delta = float(summary.get("delta_f1_vs_dummy", 1.0))
+    if delta >= 0.01:
+        errors.append(f"La mejora frente al Dummy supera el margen NO-GO: {delta!r}")
 
 
 def main() -> None:
@@ -110,7 +127,7 @@ def main() -> None:
     print(f"- Archivos con SHA-256 comprobado: {checked}")
     print(f"- Tablas reproducibles: {table_count}")
     print(f"- Figuras reproducibles: {figure_count}")
-    print("- Cifras principales coherentes con outputs/analysis_summary.json")
+    print("- Cifras principales dentro de tolerancia y decisión NO-GO conservada")
 
 
 if __name__ == "__main__":

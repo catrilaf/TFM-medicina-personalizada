@@ -32,6 +32,13 @@ La selección se hace dentro de train mediante CV 5×2; el holdout del 25 % se
 mantiene separado hasta la evaluación. Al terminar, el propio comando actualiza
 el manifiesto SHA-256 para que `verify_repository.py` compruebe ese estado local.
 
+Los valores publicados corresponden al entorno de referencia. En otro sistema
+operativo, Random Forest puede variar unas milésimas al resolver empates entre
+divisiones equivalentes. La auditoría admite ±0,005 en las métricas puntuales,
+pero exige que se conserve el resultado científico: rendimiento cercano a
+0,25, sin mejora material frente al Dummy, p de aleatorización no significativo
+y 100 % de abstención.
+
 ## 3. Evidencias clave
 
 | Pregunta | Evidencia |

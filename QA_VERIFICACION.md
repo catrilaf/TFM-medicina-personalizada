@@ -5,7 +5,12 @@ Fecha de la verificación reproducible original: 24 de julio de 2026.
 Revisión del paquete para publicación académica: 19 de agosto de 2026.
 
 - Reconstrucción integral repetida con `python run_all.py`: correcta.
-- Las cifras regeneradas coinciden con README, ficha del modelo y artefactos.
+- Las cifras de referencia coinciden con README, ficha del modelo y artefactos.
+- En distintos sistemas operativos los ensembles de árboles pueden resolver de
+  forma diferente empates de impureza y variar unas milésimas. La verificación
+  exige tolerancia de ±0,005 en las métricas principales y conserva criterios
+  científicos invariantes: F1 próxima a 0,25, ausencia de ganancia material,
+  aleatorización no significativa y abstención del 100 %.
 
 ## Pipeline y datos
 
