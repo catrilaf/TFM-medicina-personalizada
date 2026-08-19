@@ -10,8 +10,12 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "MANIFEST_SHA256.csv"
 EXCLUDED_PARTS = {
     ".git",
+    ".coverage",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
     "__pycache__",
     ".pytest_cache",
+    ".ruff_cache",
     ".venv",
     "qa",
     "tmp",

@@ -12,12 +12,15 @@ from sklearn.compose import ColumnTransformer
 from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import f1_score, precision_score, recall_score
-from sklearn.model_selection import RepeatedStratifiedKFold, cross_validate, train_test_split
+from sklearn.metrics import f1_score, make_scorer, precision_score, recall_score
+from sklearn.model_selection import (
+    RepeatedStratifiedKFold,
+    cross_validate,
+    train_test_split,
+)
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import make_scorer
 
 from .config import (
     CATEGORICAL_FEATURES,

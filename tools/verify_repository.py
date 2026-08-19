@@ -12,7 +12,6 @@ import json
 import math
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_PATHS = [
@@ -33,8 +32,8 @@ REQUIRED_PATHS = [
 EXPECTED_TEXT = {
     "selected_model": "Random Forest",
     "evidence_conclusion": (
-        "No se demuestra señal predictiva útil: F1 macro y balanced accuracy "
-        "son equivalentes al azar."
+        "No se demuestra señal predictiva útil: el modelo no supera los "
+        "criterios preespecificados frente al azar."
     ),
 }
 
@@ -96,6 +95,12 @@ def check_metrics(errors: list[str]) -> None:
         errors.append(f"La aleatorización contradice el NO-GO: p={p_value!r}")
     if float(summary.get("abstention_rate_holdout", -1)) != 1.0:
         errors.append("La tasa de abstención del holdout debe ser 1,0")
+    metadata_path = ROOT / "outputs" / "models" / "model_metadata.json"
+    metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+    if metadata.get("signal_gate_passed") is not False:
+        errors.append("El gate de señal debe conservar la decisión NO-GO")
+    if metadata.get("clinical_go") is not False:
+        errors.append("clinical_go debe ser false en un prototipo no validado")
     delta = float(summary.get("delta_f1_vs_dummy", 1.0))
     if delta >= 0.01:
         errors.append(f"La mejora frente al Dummy supera el margen NO-GO: {delta!r}")

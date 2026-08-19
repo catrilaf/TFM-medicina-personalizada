@@ -14,13 +14,12 @@ import nbformat
 from nbconvert import HTMLExporter
 from nbconvert.preprocessors import ExecutePreprocessor
 
-
 ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK = ROOT / "notebooks" / "01_estudio_completo_oncologia.ipynb"
 REPORT = ROOT / "reports" / "Estudio_Completo_Oncologia.html"
 sys.path.insert(0, str(ROOT))
 
-from tools.build_manifest import build_manifest  # noqa: E402
+from tools.build_manifest import build_manifest
 
 
 def main() -> None:

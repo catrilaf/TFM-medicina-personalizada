@@ -8,7 +8,7 @@ seaborn==0.13.2
 joblib==1.5.2
 streamlit==1.59.2
 nbformat==5.10.4
-nbconvert==7.16.6
+nbconvert==7.17.1
 ipykernel==7.1.0
 Pillow==12.3.0
 IPython==9.15.0

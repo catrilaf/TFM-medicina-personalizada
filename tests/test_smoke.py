@@ -1,26 +1,30 @@
-from pathlib import Path
 import hashlib
+from pathlib import Path
 
 import joblib
 import numpy as np
 import pandas as pd
 import pytest
 
-from src.app_logic import build_input_frame, clinical_consistency_alerts, uncertainty_indicators
-from src.config import CORE_FEATURES, TARGET
+from src.app_logic import (
+    build_input_frame,
+    clinical_consistency_alerts,
+    uncertainty_indicators,
+)
+from src.config import CORE_FEATURES, POST_TREATMENT_COLUMNS, TARGET
 from src.data import load_datasets, numeric_target_associations, predictor_profile_audit
+from src.modeling import split_holdout
+from src.preprocessing import (
+    CLEAN_SHA256,
+    MODEL_READY_SHA256,
+    RAW_SHA256,
+)
 from src.robustness import (
     holdout_label_randomization_test,
     probabilistic_skill_table,
     selective_performance_table,
     top_label_calibration_table,
 )
-from src.preprocessing import (
-    CLEAN_SHA256,
-    MODEL_READY_SHA256,
-    RAW_SHA256,
-)
-
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -40,6 +44,16 @@ def test_dataset_contract():
     assert model_ready["patient_id"].is_unique
     assert model_ready[TARGET].nunique() == 4
     assert set(CORE_FEATURES).issubset(model_ready.columns)
+    assert set(CORE_FEATURES).isdisjoint(POST_TREATMENT_COLUMNS)
+
+    X_train, X_test, _, _ = split_holdout(model_ready, TARGET)
+    assert X_train.index.is_unique and X_test.index.is_unique
+    assert set(X_train.index).isdisjoint(X_test.index)
+    assert set(X_train.index) | set(X_test.index) == set(model_ready.index)
+
+    train_profiles = set(map(tuple, X_train[CORE_FEATURES].astype(str).to_numpy()))
+    test_profiles = set(map(tuple, X_test[CORE_FEATURES].astype(str).to_numpy()))
+    assert train_profiles.isdisjoint(test_profiles)
 
 
 def test_dataset_provenance_hashes():

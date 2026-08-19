@@ -356,8 +356,9 @@ with simulator_tab:
 with evidence_tab:
     st.subheader("Revisión comparativa de modelos")
     st.write(
-        "La selección usa validación cruzada repetida dentro de train. El holdout se consulta una sola vez "
-        "para estimar el rendimiento final."
+        "La selección usa validación cruzada repetida dentro de train. El holdout "
+        "interno queda fuera de esa selección y se usa después para la evaluación "
+        "comparativa y auditorías post hoc; no es una validación externa."
     )
     cv = load_table("12_cv_resumen_modelos.csv")
     if not cv.empty:

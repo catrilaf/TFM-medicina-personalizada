@@ -82,7 +82,7 @@ def subgroup_performance(
                 {
                     "atributo": group_column,
                     "grupo": str(group_value),
-                    "n": int(len(subset)),
+                    "n": len(subset),
                     "accuracy": float(accuracy_score(subset["y_true"], subset["y_pred"])),
                     "balanced_accuracy": float(
                         balanced_accuracy_score(subset["y_true"], subset["y_pred"])

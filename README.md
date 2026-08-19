@@ -41,6 +41,7 @@ oficial será siempre la que el autor deposite en la plataforma universitaria.
 - [Matriz de cumplimiento de la pauta VIU](docs/MATRIZ_CUMPLIMIENTO_VIU.md)
 - [Despliegue verificable de Streamlit](docs/DESPLIEGUE_STREAMLIT.md)
 - [Registro del uso de herramientas de IA](docs/REGISTRO_USO_IA.md)
+- [Comprobación personal de autoría y defensa](docs/AUTORIA_Y_DEFENSA.md)
 - [Ficha del dataset](data/DATASET_CARD.md)
 - [Ficha del modelo](MODEL_CARD.md)
 - [Control de calidad realizado](QA_VERIFICACION.md)
@@ -80,7 +81,9 @@ El holdout estratificado del 25 % se separa antes del entrenamiento. La
 comparación se realiza exclusivamente sobre el 75 % restante mediante
 validación cruzada estratificada repetida de 5 particiones × 2 repeticiones.
 El preprocesamiento queda dentro de cada `Pipeline` para impedir que el ajuste
-use información de validación.
+use información de validación. El holdout queda fuera de la selección del
+modelo y se utiliza después para la evaluación comparativa y auditorías post
+hoc; constituye una validación interna, no externa.
 
 Resultados de referencia:
 

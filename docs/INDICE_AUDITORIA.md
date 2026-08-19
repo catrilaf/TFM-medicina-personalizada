@@ -6,6 +6,9 @@ indicado. La ruta abreviada está en
 [`REVISION_COMISION.md`](REVISION_COMISION.md) y el contraste con la pauta en
 [`MATRIZ_CUMPLIMIENTO_VIU.md`](MATRIZ_CUMPLIMIENTO_VIU.md).
 
+La preparación personal para explicar el proyecto y confirmar la declaración
+de herramientas está en [`AUTORIA_Y_DEFENSA.md`](AUTORIA_Y_DEFENSA.md).
+
 ## Memoria académica
 
 - [`TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf`](../memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf)

@@ -28,8 +28,10 @@ python tools/verify_repository.py
 
 `run_all.py` comprueba el hash del CSV bruto y reconstruye datasets, split,
 preprocesamiento, seis modelos, tablas, figuras, metadatos y modelo serializado.
-La selección se hace dentro de train mediante CV 5×2; el holdout del 25 % se
-mantiene separado hasta la evaluación. Al terminar, el propio comando actualiza
+La selección se hace dentro de train mediante CV 5×2; el holdout interno del
+25 % se mantiene separado de esa selección y se utiliza posteriormente para la
+evaluación comparativa y las auditorías post hoc. No equivale a validación
+externa. Al terminar, el propio comando actualiza
 el manifiesto SHA-256 para que `verify_repository.py` compruebe ese estado local.
 
 Los valores publicados corresponden al entorno de referencia. En otro sistema
@@ -72,3 +74,9 @@ responsable es NO-GO clínico y 100 % de abstención con el umbral ilustrativo.
 El aporte demostrable es la cadena reproducible, la prevención de leakage, la
 comparación contra baselines, la auditoría de señal y la interfaz que impide
 presentar una predicción cercana al azar como recomendación médica.
+
+Los intervalos y la prueba de Wilcoxon construidos sobre los diez resultados de
+CV son diagnósticos exploratorios: los folds repetidos se solapan y no pueden
+tratarse como observaciones estadísticamente independientes. La decisión NO-GO
+se apoya además en el holdout interno, la aleatorización de etiquetas, el skill
+probabilístico negativo, la calibración y la abstención completa.
