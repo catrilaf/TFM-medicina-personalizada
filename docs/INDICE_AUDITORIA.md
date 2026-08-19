@@ -1,7 +1,15 @@
 # Índice de auditoría técnica
 
-Este índice permite revisar el proyecto sin depender de la memoria académica.
-Cada enlace apunta al código que genera o comprueba el artefacto indicado.
+Este índice permite revisar el proyecto desde la memoria o directamente desde
+el código. Cada enlace apunta al código que genera o comprueba el artefacto
+indicado. La ruta abreviada está en
+[`REVISION_COMISION.md`](REVISION_COMISION.md) y el contraste con la pauta en
+[`MATRIZ_CUMPLIMIENTO_VIU.md`](MATRIZ_CUMPLIMIENTO_VIU.md).
+
+## Memoria académica
+
+- [`TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf`](../memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf)
+- [`TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.docx`](../memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.docx)
 
 ## A. Preparación y procedencia de los datos
 
@@ -19,7 +27,7 @@ Cada enlace apunta al código que genera o comprueba el artefacto indicado.
 |---|---|---|
 | EDA y asociaciones | [`src/analysis.py`](../src/analysis.py) | [`outputs/tables/`](../outputs/tables/) |
 | Gráficos | [`src/figures.py`](../src/figures.py) | [`outputs/figures/`](../outputs/figures/) |
-| Estudio paso a paso | [`tools/build_notebook.py`](../tools/build_notebook.py) | [`notebooks/01_estudio_completo_oncologia.ipynb`](../notebooks/01_estudio_completo_oncologia.ipynb) |
+| Estudio paso a paso | [`tools/render_notebook.py`](../tools/render_notebook.py) | [`notebooks/01_estudio_completo_oncologia.ipynb`](../notebooks/01_estudio_completo_oncologia.ipynb) y [`reports/Estudio_Completo_Oncologia.html`](../reports/Estudio_Completo_Oncologia.html) |
 
 ## C. Entrenamiento y evaluación
 
@@ -49,6 +57,8 @@ Cada enlace apunta al código que genera o comprueba el artefacto indicado.
 | Abstención funcional | [`tests/test_streamlit_app.py`](../tests/test_streamlit_app.py) | `python -m pytest -q` |
 | Reproducción integral | [`run_all.py`](../run_all.py) | [`QA_VERIFICACION.md`](../QA_VERIFICACION.md) |
 | Integridad de archivos | [`tools/build_manifest.py`](../tools/build_manifest.py) | [`MANIFEST_SHA256.csv`](../MANIFEST_SHA256.csv) |
+| Auditoría autocontenida | [`tools/verify_repository.py`](../tools/verify_repository.py) | `python tools/verify_repository.py` |
+| Integración continua | [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) | [GitHub Actions](https://github.com/catrilaf/TFM-medicina-personalizada/actions) |
 
 ## F. Código histórico
 

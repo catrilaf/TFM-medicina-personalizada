@@ -1,0 +1,41 @@
+name: Validación reproducible
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Comprobar sintaxis
+        run: python -m compileall -q app.py run_all.py src tests tools
+
+      - name: Ejecutar pruebas
+        run: python -m pytest -q
+
+      - name: Reproducir análisis completo
+        run: python run_all.py
+
+      - name: Verificar consistencia del repositorio
+        run: python tools/verify_repository.py
