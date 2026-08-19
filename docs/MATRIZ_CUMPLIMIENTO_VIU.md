@@ -21,10 +21,10 @@ autorización del tutor, el informe de Turnitin ni la evaluación del tribunal.
 | Tablas y figuras identificadas, explicadas y con fuente | Cumple | Se incluyen leyendas, referencias en texto y fuente de elaboración propia o bibliográfica. |
 | Anexos técnicos pertinentes | Cumple | Fichas, riesgos, reproducibilidad, procedencia, contrato, NO-GO, web, trazabilidad y fragmentos esenciales. |
 | Originalidad y redacción autónoma | Responsabilidad del autor | No puede certificarse mediante revisión técnica. Turnitin solo se ejecuta en el depósito oficial y el autor debe releer y asumir cada párrafo. |
-| Declaración del uso de IA | Requiere confirmación del autor | La memoria y `docs/REGISTRO_USO_IA.md` deben enumerar exactamente las herramientas realmente utilizadas, sin omisiones ni versiones inventadas. |
+| Declaración del uso de IA | Cumple según confirmación del autor | El autor confirmó el uso de ChatGPT, Claude y Gemini y mantuvo en la memoria el alcance, los límites y las verificaciones aplicadas. `docs/REGISTRO_USO_IA.md` replica esta declaración para evitar discrepancias. |
 | Paquete Python reproducible | Cumple | `run_all.py`, dependencias fijadas, tests, notebook ejecutado, 35 tablas, 18 figuras, modelo, metadatos y manifiesto. La conclusión NO-GO se comprueba con tolerancia numérica entre sistemas operativos. |
 | Aplicación web segura | Cumple como prototipo | Streamlit carga el pipeline, valida entradas, genera alertas y se abstiene; no es una herramienta clínica. |
-| Enlace público auditable | Cumple para el código | <https://github.com/catrilaf/TFM-medicina-personalizada>. La URL pública de Streamlit permanece pendiente hasta que el autor despliegue y pruebe la aplicación. |
+| Enlace público auditable | Cumple | Código: <https://github.com/catrilaf/TFM-medicina-personalizada>. Aplicación: <https://tfm-medicina-personalizada.streamlit.app/>. La instancia se verificó con Python 3.12, cinco secciones navegables, abstención y alerta de consistencia. |
 
 ## Defensa
 

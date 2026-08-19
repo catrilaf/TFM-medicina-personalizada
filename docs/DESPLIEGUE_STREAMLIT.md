@@ -3,6 +3,13 @@
 La aplicación puede revisarse localmente o publicarse como demostración
 académica. No requiere secretos, base de datos ni servicios externos.
 
+**Instancia pública verificada:**
+<https://tfm-medicina-personalizada.streamlit.app/>
+
+La instancia usa el repositorio `catrilaf/TFM-medicina-personalizada`, la rama
+`main`, `app.py` como archivo principal y Python 3.12. El acceso está configurado
+como público y localizable en los ajustes de Streamlit Community Cloud.
+
 ## Ejecución local
 
 ```bash
@@ -30,6 +37,24 @@ python -m pytest -q tests/test_streamlit_app.py
    caso válido, el perfil inconsistente y la abstención.
 7. Añadir al README únicamente la URL comprobada.
 
+## Verificación del despliegue vigente
+
+El 19 de agosto de 2026 se comprobó en la instancia pública que:
+
+- las cinco secciones de la interfaz cargan;
+- el perfil mediano termina en abstención con una confianza máxima de 26,1 %;
+- el control «estadio I con metástasis» genera una advertencia de consistencia
+  y también termina en abstención;
+- el panel muestra el dictamen `NO-GO clínico`, F1 macro CV 0,252 y abstención
+  del 100 % en holdout;
+- no se solicitan identificadores ni se muestra una recomendación terapéutica.
+
+La primera construcción automática seleccionó Python 3.14 y no completó el
+aprovisionamiento. Se fijó Python 3.12 desde los ajustes de Community Cloud,
+tras lo cual se instalaron las 97 dependencias declaradas y el servidor inició
+correctamente. Esta configuración coincide con la versión indicada para la
+reproducción local.
+
 ## Controles antes de compartir la URL
 
 - El encabezado debe indicar “prototipo académico no asistencial”.
@@ -40,6 +65,5 @@ python -m pytest -q tests/test_streamlit_app.py
   con el Dummy estratificado.
 - La aplicación no debe registrar ni afirmar una recomendación terapéutica.
 
-El repositorio no declara una URL pública hasta que el autor complete estos
-pasos y confirme su disponibilidad. GitHub permite auditar el código; no
-sustituye el despliegue de Streamlit.
+GitHub permite auditar el código y Streamlit facilita la revisión funcional.
+Ninguno de los dos convierte el prototipo en un sistema clínicamente validado.
