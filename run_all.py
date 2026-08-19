@@ -13,7 +13,6 @@ from src import run_analysis
 from src.preprocessing import rebuild_from_raw
 from tools.build_manifest import build_manifest
 
-
 if __name__ == "__main__":
     root = Path(__file__).resolve().parent
     preprocessing = rebuild_from_raw(root)

@@ -20,7 +20,10 @@ Revisión del paquete para publicación académica: 19 de agosto de 2026.
 - Identificadores únicos en model-ready.
 - Nueve predictores exclusivamente pretratamiento.
 - Hashes del archivo original y de los dos datasets derivados comprobados.
-- Holdout estratificado del 25 % separado antes del entrenamiento.
+- Holdout interno estratificado del 25 % separado antes del entrenamiento y
+  excluido de la selección del modelo.
+- Ausencia de solapamiento de índices y de perfiles predictores idénticos entre
+  train y holdout para la partición reproducible con semilla 42.
 
 ## Modelo
 
@@ -28,10 +31,14 @@ Revisión del paquete para publicación académica: 19 de agosto de 2026.
   árbol de decisión, Random Forest y Extra Trees.
 - Random Forest: F1 macro CV 0,2521 y F1 macro holdout 0,2496.
 - Dummy estratificado: F1 macro CV 0,2525.
-- Diferencia pareada: −0,0004; intervalo del 95 % compatible con cero.
+- Diferencia pareada: −0,0004; intervalo del 95 % compatible con cero. Los
+  intervalos y Wilcoxon de los folds repetidos se interpretan como diagnósticos
+  exploratorios porque los folds se solapan.
 - Aleatorización de etiquetas: p = 0,4991.
 - Brier skill frente a prevalencia: −0,0118.
 - Cobertura al umbral ilustrativo del 45 %: 0 %; abstención: 100 %.
+- Gate formal de suficiencia de señal: `false`; autorización clínica:
+  `clinical_go=false`.
 
 ## Aplicación
 
@@ -58,6 +65,11 @@ Revisión del paquete para publicación académica: 19 de agosto de 2026.
 - El cuaderno usa el kernel portátil `python3` y puede reconstruirse, ejecutarse
   y exportarse con `python tools/render_notebook.py`.
 - La validación automática se define en `.github/workflows/ci.yml`.
+- `ruff check` finaliza sin avisos sobre el código activo y las utilidades.
+- `pip-audit -r requirements.txt` no informa vulnerabilidades conocidas; se
+  actualizó `nbconvert` a 7.17.1.
+- El PDF final conserva 87 páginas A4 y se exportó como documento etiquetado;
+  la auditoría DOCX no presenta incidencias de accesibilidad de severidad alta.
 
 ## Dictamen
 

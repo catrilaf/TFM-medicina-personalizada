@@ -54,7 +54,7 @@ def run_clustering(df: pd.DataFrame) -> dict[str, object]:
         rows.append(
             {
                 "cluster": int(cluster),
-                "n": int(len(subset)),
+                "n": len(subset),
                 "proporcion": float(len(subset) / len(clustered)),
                 "age_mean": float(subset["age"].mean()),
                 "bmi_mean": float(subset["bmi"].mean()),

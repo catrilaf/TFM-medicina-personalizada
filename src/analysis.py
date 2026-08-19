@@ -4,10 +4,9 @@ from __future__ import annotations
 
 import json
 import platform
-from datetime import date
+from datetime import datetime, timezone
 from pathlib import Path
 
-import joblib
 import matplotlib
 import numpy as np
 import pandas as pd
@@ -27,8 +26,8 @@ from .data import (
     leakage_audit_table,
     load_datasets,
     missingness_table,
-    numeric_target_associations,
     numeric_summary,
+    numeric_target_associations,
     predictor_profile_audit,
     target_associations,
     target_distribution,
@@ -154,7 +153,7 @@ def run_analysis(project_root: Path | str) -> dict[str, object]:
     plot_target_by_cancer(model_ready, paths["figures"] / "04_regimen_por_cancer.png")
     plot_associations(associations, paths["figures"] / "05_asociaciones_target.png")
 
-    # Fases 2 a 5 - Split congelado, CV solo en train y evaluación final en holdout.
+    # Fases 2 a 5 - Split congelado, CV solo en train y evaluación interna en holdout.
     X_train, X_test, y_train, y_test = split_holdout(model_ready, TARGET)
     split_manifest = pd.DataFrame(
         [
@@ -307,7 +306,7 @@ def run_analysis(project_root: Path | str) -> dict[str, object]:
     plot_learning_curve(learning, paths["figures"] / "18_curva_aprendizaje.png")
 
     # Modelo final para el prototipo: se reentrena en todos los datos después de
-    # conservar la evaluación holdout anterior como evidencia independiente.
+    # conservar la evaluación del holdout interno y sus auditorías post hoc.
     full_model_path = paths["models"] / "modelo_experimental_full.joblib"
     fit_full_and_save(
         selected_model,
@@ -322,11 +321,6 @@ def run_analysis(project_root: Path | str) -> dict[str, object]:
     delta_f1 = float(cv_selected["f1_macro_mean"] - dummy_stratified)
     abstention_threshold = 0.45
     abstention_rate = float((predictions_df["confianza_maxima"] < abstention_threshold).mean())
-    evidence_conclusion = (
-        "No se demuestra señal predictiva útil: F1 macro y balanced accuracy son equivalentes al azar."
-        if delta_f1 < 0.01
-        else "Se observa una mejora exploratoria que requiere validación externa."
-    )
     f1_interval = bootstrap_intervals.loc[bootstrap_intervals["metrica"] == "f1_macro"].iloc[0]
     balanced_interval = bootstrap_intervals.loc[
         bootstrap_intervals["metrica"] == "balanced_accuracy"
@@ -342,8 +336,35 @@ def run_analysis(project_root: Path | str) -> dict[str, object]:
         (learning["modelo"] == selected_model) & (learning["fraccion_train"] == 1.0)
     ].iloc[0]
 
+    # Regla preespecificada de suficiencia de señal. No equivale a aprobación
+    # clínica: aun superándola serían necesarios datos externos y evaluación
+    # prospectiva. La comparación pareada se conserva como diagnóstico
+    # exploratorio porque los folds repetidos no son independientes.
+    signal_gate = {
+        "delta_f1_vs_dummy_ge_0_01": delta_f1 >= 0.01,
+        "paired_cv_ci_lower_gt_0_exploratory": (
+            float(dummy_comparison["delta_f1_ic95_inferior"]) > 0
+        ),
+        "randomization_p_lt_0_05": (
+            float(randomization_result["p_unilateral_superior"]) < 0.05
+        ),
+        "positive_brier_skill": (
+            float(selected_probabilistic["brier_skill_vs_prevalencia"]) > 0
+        ),
+        "positive_log_loss_gain": (
+            float(selected_probabilistic["ganancia_log_loss_vs_prevalencia"]) > 0
+        ),
+        "nonzero_coverage_at_safety_threshold": abstention_rate < 1.0,
+    }
+    signal_gate_passed = all(signal_gate.values())
+    evidence_conclusion = (
+        "Se observa una señal exploratoria que aún requiere validación externa."
+        if signal_gate_passed
+        else "No se demuestra señal predictiva útil: el modelo no supera los criterios preespecificados frente al azar."
+    )
+
     metadata = {
-        "generated_on": date.today().isoformat(),
+        "generated_on": datetime.now(timezone.utc).date().isoformat(),
         "seed": SEED,
         "target": TARGET,
         "features": CORE_FEATURES,
@@ -393,6 +414,13 @@ def run_analysis(project_root: Path | str) -> dict[str, object]:
             "Umbral ilustrativo de seguridad; no optimizado ni validado clínicamente."
         ),
         "holdout_abstention_rate": abstention_rate,
+        "signal_gate": signal_gate,
+        "signal_gate_passed": signal_gate_passed,
+        "clinical_go": False,
+        "clinical_go_reason": (
+            "No existe validación clínica externa ni prospectiva; el prototipo "
+            "no puede recomendar tratamientos."
+        ),
         "evidence_conclusion": evidence_conclusion,
         "use_restriction": "Prototipo académico. No prescribe ni recomienda tratamientos.",
         "data_provenance": (
@@ -437,8 +465,8 @@ def run_analysis(project_root: Path | str) -> dict[str, object]:
         json.dump(environment, stream, ensure_ascii=False, indent=2)
 
     summary = {
-        "dataset_rows_clean": int(len(clean)),
-        "dataset_rows_model_ready": int(len(model_ready)),
+        "dataset_rows_clean": len(clean),
+        "dataset_rows_model_ready": len(model_ready),
         "selected_model": selected_model,
         "cv_f1_macro_mean": float(cv_selected["f1_macro_mean"]),
         "cv_balanced_accuracy_mean": float(cv_selected["balanced_accuracy_mean"]),

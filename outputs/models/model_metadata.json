@@ -70,7 +70,18 @@
   "abstention_threshold": 0.45,
   "abstention_threshold_status": "Umbral ilustrativo de seguridad; no optimizado ni validado clínicamente.",
   "holdout_abstention_rate": 1.0,
-  "evidence_conclusion": "No se demuestra señal predictiva útil: F1 macro y balanced accuracy son equivalentes al azar.",
+  "signal_gate": {
+    "delta_f1_vs_dummy_ge_0_01": false,
+    "paired_cv_ci_lower_gt_0_exploratory": false,
+    "randomization_p_lt_0_05": false,
+    "positive_brier_skill": false,
+    "positive_log_loss_gain": false,
+    "nonzero_coverage_at_safety_threshold": false
+  },
+  "signal_gate_passed": false,
+  "clinical_go": false,
+  "clinical_go_reason": "No existe validación clínica externa ni prospectiva; el prototipo no puede recomendar tratamientos.",
+  "evidence_conclusion": "No se demuestra señal predictiva útil: el modelo no supera los criterios preespecificados frente al azar.",
   "use_restriction": "Prototipo académico. No prescribe ni recomienda tratamientos.",
   "data_provenance": "Archivo y licencia verificados contra Kaggle v1; procedencia clínica, institución, protocolo y naturaleza real o sintética no acreditados.",
   "category_values": {

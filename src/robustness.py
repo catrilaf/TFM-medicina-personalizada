@@ -102,7 +102,13 @@ def paired_cv_comparisons(
     selected_model: str,
     seed: int = SEED,
 ) -> pd.DataFrame:
-    """Compara folds alineados del modelo seleccionado frente a cada alternativa."""
+    """Compara folds alineados del modelo seleccionado frente a cada alternativa.
+
+    Los folds de una validación cruzada repetida se solapan y no constituyen
+    observaciones independientes. Por ello, los intervalos bootstrap y la prueba
+    de Wilcoxon se publican como diagnósticos exploratorios, no como inferencia
+    confirmatoria ni como sustituto de una validación externa.
+    """
 
     selected = cv_long.loc[
         cv_long["modelo"] == selected_model,
@@ -148,6 +154,10 @@ def paired_cv_comparisons(
                 "delta_balanced_accuracy_ic95_inferior": bal_low,
                 "delta_balanced_accuracy_ic95_superior": bal_high,
                 "p_wilcoxon_f1": p_value,
+                "nota_inferencia": (
+                    "Exploratoria: los folds de CV repetida se solapan y no son "
+                    "observaciones independientes."
+                ),
                 "lectura": (
                     "Sin evidencia de diferencia"
                     if f1_low <= 0 <= f1_high
@@ -175,7 +185,6 @@ def top_label_calibration_table(
     edges = np.linspace(0.0, 1.0, n_bins + 1)
     bin_ids = np.clip(np.digitize(confidence, edges, right=True) - 1, 0, n_bins - 1)
     rows = []
-    total = len(y_array)
     for bin_id in range(n_bins):
         mask = bin_ids == bin_id
         if not mask.any():

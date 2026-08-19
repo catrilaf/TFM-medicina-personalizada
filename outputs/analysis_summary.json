@@ -30,5 +30,5 @@
   "abstention_rate_holdout": 1.0,
   "best_k_clustering": 2,
   "clustering_silhouette": 0.09779684839930171,
-  "evidence_conclusion": "No se demuestra señal predictiva útil: F1 macro y balanced accuracy son equivalentes al azar."
+  "evidence_conclusion": "No se demuestra señal predictiva útil: el modelo no supera los criterios preespecificados frente al azar."
 }
