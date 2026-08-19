@@ -27,18 +27,30 @@ def digest(path: Path) -> str:
     return hasher.hexdigest()
 
 
-files = [
-    path
-    for path in ROOT.rglob("*")
-    if path.is_file()
-    and path != OUTPUT
-    and not any(part in EXCLUDED_PARTS for part in path.relative_to(ROOT).parts)
-]
+def build_manifest(root: Path = ROOT) -> int:
+    """Registra el estado íntegro del paquete y devuelve el número de archivos."""
 
-with OUTPUT.open("w", newline="", encoding="utf-8") as stream:
-    writer = csv.writer(stream)
-    writer.writerow(["archivo", "bytes", "sha256"])
-    for path in sorted(files):
-        writer.writerow([path.relative_to(ROOT).as_posix(), path.stat().st_size, digest(path)])
+    root = Path(root).resolve()
+    output = root / "MANIFEST_SHA256.csv"
+    files = [
+        path
+        for path in root.rglob("*")
+        if path.is_file()
+        and path != output
+        and not any(part in EXCLUDED_PARTS for part in path.relative_to(root).parts)
+    ]
 
-print(f"{OUTPUT}: {len(files)} archivos")
+    with output.open("w", newline="", encoding="utf-8") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(["archivo", "bytes", "sha256"])
+        for path in sorted(files):
+            writer.writerow(
+                [path.relative_to(root).as_posix(), path.stat().st_size, digest(path)]
+            )
+
+    print(f"{output}: {len(files)} archivos")
+    return len(files)
+
+
+if __name__ == "__main__":
+    build_manifest()

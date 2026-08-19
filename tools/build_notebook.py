@@ -54,9 +54,11 @@ if not (ROOT / "run_all.py").exists():
 sys.path.insert(0, str(ROOT))
 
 from src import run_analysis
+from src.preprocessing import rebuild_from_raw
 
+preprocessing = rebuild_from_raw(ROOT)
 summary = run_analysis(ROOT)
-summary
+{"preprocessing": preprocessing, "analysis": summary}
 """
     ),
     md(
@@ -277,9 +279,9 @@ El resultado establece un **NO-GO clínico** y conserva valor como prueba de con
 
 notebook = nbf.v4.new_notebook(cells=cells)
 notebook.metadata.kernelspec = {
-    "display_name": "Python 3 - TFM Oncologia",
+    "display_name": "Python 3",
     "language": "python",
-    "name": "tfm_oncologia_codex",
+    "name": "python3",
 }
 notebook.metadata.language_info = {"name": "python", "version": "3.12"}
 nbf.write(notebook, OUTPUT)

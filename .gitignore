@@ -21,7 +21,8 @@ venv/
 .vscode/
 *.swp
 
-# La memoria y la presentación se depositan por separado
+# Los documentos de trabajo y las presentaciones se depositan por separado.
+# Se exceptúa únicamente la memoria final publicada en memoria/.
 *.doc
 *.docx
 *.pdf
@@ -29,6 +30,8 @@ venv/
 *.pptx
 *.rtf
 ~$*
+!memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.docx
+!memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf
 
 # Temporales
 tmp/

@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import altair as alt
 import joblib
 import pandas as pd
 import streamlit as st
@@ -31,7 +32,7 @@ st.set_page_config(
     page_title="Auditoría de IA oncológica",
     page_icon="🧭",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 st.markdown(
@@ -313,7 +314,25 @@ with simulator_tab:
                 )
         with result_right:
             st.markdown("#### Distribución de probabilidades")
-            st.bar_chart(probability_table.set_index("régimen"))
+            probability_chart = (
+                alt.Chart(probability_table)
+                .mark_bar(color="#245783")
+                .encode(
+                    x=alt.X(
+                        "probabilidad:Q",
+                        title="Probabilidad experimental",
+                        scale=alt.Scale(domain=[0, 1]),
+                        axis=alt.Axis(format="%"),
+                    ),
+                    y=alt.Y("régimen:N", title="Régimen registrado", sort="-x"),
+                    tooltip=[
+                        alt.Tooltip("régimen:N", title="Régimen"),
+                        alt.Tooltip("probabilidad:Q", title="Probabilidad", format=".1%"),
+                    ],
+                )
+                .properties(height=220)
+            )
+            st.altair_chart(probability_chart, width="stretch")
             st.dataframe(
                 probability_table.style.format({"probabilidad": "{:.1%}"}),
                 width="stretch",

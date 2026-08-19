@@ -11,7 +11,7 @@ responsabilidad de comprender, comprobar, corregir y defender cada decisión.
 
 | Herramienta | Modelo o versión identificable | Periodo | Finalidad | Verificación humana/técnica |
 |---|---|---|---|---|
-| OpenAI Codex, aplicación de escritorio | Familia GPT-5. El identificador interno exacto de compilación no fue mostrado en los metadatos accesibles de la sesión | 13 de julio–18 de agosto de 2026 | Revisión de organización del código, apoyo en depuración, diseño de pruebas, documentación técnica y preparación del repositorio | Lectura del código; ejecución del pipeline; contraste entre CSV, tablas, figuras y metadatos; pruebas automatizadas; comprobación de hashes; revisión de advertencias clínicas |
+| OpenAI Codex, aplicación de escritorio | Familia GPT-5. El identificador interno exacto de compilación no fue mostrado en los metadatos accesibles de la sesión | 13 de julio–19 de agosto de 2026 | Revisión de organización del código, apoyo en depuración, diseño de pruebas, documentación técnica y preparación del repositorio | Lectura del código; ejecución del pipeline; contraste entre CSV, tablas, figuras y metadatos; pruebas automatizadas; comprobación de hashes; revisión de advertencias clínicas |
 
 ## Límites de la asistencia
 
@@ -23,7 +23,8 @@ responsabilidad de comprender, comprobar, corregir y defender cada decisión.
   sanitarios.
 - No se usó la aplicación como recomendador clínico y no se introdujeron datos
   reales de pacientes.
-- La memoria y su redacción académica no forman parte de este repositorio.
+- La memoria publicada es responsabilidad del autor y debe coincidir con el
+  registro real de herramientas que este mantenga antes del depósito.
 
 ## Comprobaciones aplicadas
 
@@ -33,7 +34,8 @@ responsabilidad de comprender, comprobar, corregir y defender cada decisión.
 4. Verificación de que solo se usan nueve predictores pretratamiento.
 5. Comparación de los modelos con baselines y holdout independiente.
 6. Revisión de calibración, aleatorización de etiquetas, subgrupos y abstención.
-7. Comprobación de que el repositorio no contiene la memoria ni la presentación.
+7. Comprobación de que la memoria autorizada está identificada y que no se
+   publican borradores, presentaciones ni archivos de trabajo adicionales.
 
 ## Nota que debe completar el autor antes del depósito
 

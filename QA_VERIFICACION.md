@@ -2,10 +2,15 @@
 
 Fecha de la verificación reproducible original: 24 de julio de 2026.
 
-Revisión del paquete para publicación académica: 18 de agosto de 2026.
+Revisión del paquete para publicación académica: 19 de agosto de 2026.
 
 - Reconstrucción integral repetida con `python run_all.py`: correcta.
-- Las cifras regeneradas coinciden con README, ficha del modelo y artefactos.
+- Las cifras de referencia coinciden con README, ficha del modelo y artefactos.
+- En distintos sistemas operativos los ensembles de árboles pueden resolver de
+  forma diferente empates de impureza y variar unas milésimas. La verificación
+  exige tolerancia de ±0,005 en las métricas principales y conserva criterios
+  científicos invariantes: F1 próxima a 0,25, ausencia de ganancia material,
+  aleatorización no significativa y abstención del 100 %.
 
 ## Pipeline y datos
 
@@ -42,12 +47,17 @@ Revisión del paquete para publicación académica: 18 de agosto de 2026.
 - Entorno limpio temporal con Python 3.12.13.
 - Dependencias instaladas exclusivamente desde `requirements.txt`.
 - Ejecución: `python -m pytest -q`.
-- Resultado de la revisión del 18 de agosto: **10 pruebas superadas de 10** en
-  67,55 segundos.
-- El paquete no contiene DOCX, PDF, PPTX, cachés ni entornos virtuales.
+- Resultado local de la revisión del 19 de agosto: **13 pruebas superadas de
+  13** con Python 3.12.13.
+- La memoria final se incluye en DOCX y PDF; no se publica una presentación.
+- El repositorio ignora cachés, entornos virtuales, secretos y documentos de
+  trabajo distintos de la memoria final expresamente autorizada.
 - No se detectaron credenciales, claves privadas ni secretos en los archivos
   publicables mediante la auditoría de patrones previa a la publicación.
 - Inventario y huellas de integridad registrados en `MANIFEST_SHA256.csv`.
+- El cuaderno usa el kernel portátil `python3` y puede reconstruirse, ejecutarse
+  y exportarse con `python tools/render_notebook.py`.
+- La validación automática se define en `.github/workflows/ci.yml`.
 
 ## Dictamen
 

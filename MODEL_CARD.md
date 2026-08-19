@@ -2,7 +2,7 @@
 
 ## Estado y decisión
 
-- Versión evaluada: Entrega 2, julio de 2026.
+- Versión evaluada: 1.0.0, agosto de 2026.
 - Estado: prueba de concepto académica.
 - Decisión de avance: **NO-GO clínico**.
 - Motivo: no se demuestra rendimiento superior al azar ni a los baselines.

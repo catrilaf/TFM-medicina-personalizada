@@ -1,5 +1,7 @@
 # Sistema web de recomendación de tratamientos personalizados en oncología
 
+[![Validación reproducible](https://github.com/catrilaf/TFM-medicina-personalizada/actions/workflows/ci.yml/badge.svg)](https://github.com/catrilaf/TFM-medicina-personalizada/actions/workflows/ci.yml)
+
 Repositorio técnico y reproducible del Trabajo Fin de Máster en Inteligencia
 Artificial Aplicada de Enrique Catrilaf González.
 
@@ -15,8 +17,10 @@ una interfaz web con abstención.
 > confianza no supera el umbral ilustrativo. No debe utilizarse con pacientes
 > reales ni para decisiones asistenciales.
 
-La memoria del TFM, su PDF y la presentación se mantienen fuera de este
-repositorio, tal como se ha definido para el depósito académico.
+La memoria final está disponible en formatos
+[`DOCX`](memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.docx) y
+[`PDF`](memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf). La versión
+oficial será siempre la que el autor deposite en la plataforma universitaria.
 
 ## Revisión rápida
 
@@ -32,6 +36,9 @@ repositorio, tal como se ha definido para el depósito académico.
 - [Notebook ejecutado](notebooks/01_estudio_completo_oncologia.ipynb)
 - [Informe técnico HTML](reports/Estudio_Completo_Oncologia.html)
 - [Índice de auditoría y correspondencia con anexos](docs/INDICE_AUDITORIA.md)
+- [Ruta de revisión para la comisión](docs/REVISION_COMISION.md)
+- [Matriz de cumplimiento de la pauta VIU](docs/MATRIZ_CUMPLIMIENTO_VIU.md)
+- [Despliegue verificable de Streamlit](docs/DESPLIEGUE_STREAMLIT.md)
 - [Registro del uso de herramientas de IA](docs/REGISTRO_USO_IA.md)
 - [Ficha del dataset](data/DATASET_CARD.md)
 - [Ficha del modelo](MODEL_CARD.md)
@@ -105,6 +112,7 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python run_all.py
 python -m pytest -q
+python tools/verify_repository.py
 ```
 
 `run_all.py` parte del CSV bruto, comprueba su hash, reconstruye los dos
@@ -120,8 +128,20 @@ streamlit run app.py
 Para revisar el estudio interactivo:
 
 ```bash
+python tools/render_notebook.py
 jupyter notebook notebooks/01_estudio_completo_oncologia.ipynb
 ```
+
+Los mismos accesos se ofrecen mediante `make reproduce`, `make test`,
+`make audit`, `make notebook` y `make web`.
+
+## Revisión pública
+
+- Repositorio: <https://github.com/catrilaf/TFM-medicina-personalizada>
+- Ejecuciones automáticas: <https://github.com/catrilaf/TFM-medicina-personalizada/actions>
+- Aplicación Streamlit pública: pendiente de despliegue por el autor. El código
+  y las instrucciones están disponibles, pero no se atribuye una URL que aún
+  no haya sido publicada y comprobada.
 
 ## Estructura
 
@@ -140,6 +160,9 @@ jupyter notebook notebooks/01_estudio_completo_oncologia.ipynb
 ├── notebooks/                   # estudio ejecutado paso a paso
 ├── reports/                     # informe técnico HTML
 ├── docs/                        # auditoría y trazabilidad
+├── memoria/                     # memoria final en DOCX y PDF
+├── .github/workflows/           # validación automática
+├── .streamlit/                  # configuración de la interfaz
 └── legacy/                      # scripts recibidos, solo trazabilidad
 ```
 
