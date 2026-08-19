@@ -1,6 +1,7 @@
 # Sistema web de recomendación de tratamientos personalizados en oncología
 
 [![Validación reproducible](https://github.com/catrilaf/TFM-medicina-personalizada/actions/workflows/ci.yml/badge.svg)](https://github.com/catrilaf/TFM-medicina-personalizada/actions/workflows/ci.yml)
+[![Aplicación Streamlit](https://img.shields.io/badge/Streamlit-aplicación_pública-FF4B4B?logo=streamlit&logoColor=white)](https://tfm-medicina-personalizada.streamlit.app/)
 
 Repositorio técnico y reproducible del Trabajo Fin de Máster en Inteligencia
 Artificial Aplicada de Enrique Catrilaf González.
@@ -139,9 +140,12 @@ Los mismos accesos se ofrecen mediante `make reproduce`, `make test`,
 
 - Repositorio: <https://github.com/catrilaf/TFM-medicina-personalizada>
 - Ejecuciones automáticas: <https://github.com/catrilaf/TFM-medicina-personalizada/actions>
-- Aplicación Streamlit pública: pendiente de despliegue por el autor. El código
-  y las instrucciones están disponibles, pero no se atribuye una URL que aún
-  no haya sido publicada y comprobada.
+- Aplicación Streamlit pública:
+  <https://tfm-medicina-personalizada.streamlit.app/>.
+- Configuración remota comprobada: rama `main`, entrada `app.py` y Python 3.12.
+- Verificación funcional realizada el 19 de agosto de 2026: carga de las cinco
+  secciones, abstención del perfil válido y advertencia para estadio I con
+  metástasis.
 
 ## Estructura
 
