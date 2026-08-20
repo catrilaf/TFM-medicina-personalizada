@@ -6,8 +6,8 @@ authors:
   - family-names: "Catrilaf González"
     given-names: "Enrique"
 repository-code: "https://github.com/catrilaf/TFM-medicina-personalizada"
-version: "1.0.0"
-date-released: "2026-08-19"
+version: "1.1.0"
+date-released: "2026-08-20"
 abstract: >-
   Pipeline reproducible de clasificación multiclase, auditoría de señal y
   aplicación Streamlit con abstención segura. Prototipo académico sin

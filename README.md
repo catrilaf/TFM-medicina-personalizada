@@ -37,6 +37,7 @@ oficial será siempre la que el autor deposite en la plataforma universitaria.
 - [Notebook ejecutado](notebooks/01_estudio_completo_oncologia.ipynb)
 - [Informe técnico HTML](reports/Estudio_Completo_Oncologia.html)
 - [Índice de auditoría y correspondencia con anexos](docs/INDICE_AUDITORIA.md)
+- [Enlace directo de cada anexo a su código Python](docs/ANEXOS_Y_CODIGO.md)
 - [Ruta de revisión para la comisión](docs/REVISION_COMISION.md)
 - [Matriz de cumplimiento de la pauta VIU](docs/MATRIZ_CUMPLIMIENTO_VIU.md)
 - [Despliegue verificable de Streamlit](docs/DESPLIEGUE_STREAMLIT.md)
@@ -146,7 +147,9 @@ Los mismos accesos se ofrecen mediante `make reproduce`, `make test`,
 - Aplicación Streamlit pública:
   <https://tfm-medicina-personalizada.streamlit.app/>.
 - Configuración remota comprobada: rama `main`, entrada `app.py` y Python 3.12.
-- Verificación funcional realizada el 19 de agosto de 2026: carga de las cinco
+- Correspondencia auditable de los anexos A-L con sus scripts y salidas:
+  [`docs/ANEXOS_Y_CODIGO.md`](docs/ANEXOS_Y_CODIGO.md).
+- Verificación funcional realizada el 20 de agosto de 2026: carga de las cinco
   secciones, abstención del perfil válido y advertencia para estadio I con
   metástasis.
 

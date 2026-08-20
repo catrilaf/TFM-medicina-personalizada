@@ -10,8 +10,8 @@ autorización del tutor, el informe de Turnitin ni la evaluación del tribunal.
 | Portada con título, fecha, titulación, curso, estudiante, tutor y convocatoria | Cumple | Portada de la memoria, página 1. El autor debe confirmar que los datos administrativos siguen vigentes el día del depósito. |
 | Índice general con páginas | Cumple | Índice automático en las páginas iniciales. |
 | Índices de tablas y figuras | Cumple | Ambos índices están incluidos y numerados. |
-| Resumen de 200–300 palabras | Ajuste menor | El recuento automatizado obtiene aproximadamente 308 palabras en español; se aconseja reducirlo a 300 o menos con redacción propia. |
-| Abstract en inglés | Cumple | Aproximadamente 271 palabras. |
+| Resumen de 200–300 palabras | Cumple | El recuento automatizado de la versión final obtiene 293 palabras en español. |
+| Abstract en inglés | Cumple | El recuento automatizado obtiene 223 palabras. |
 | Entre 4 y 8 palabras clave | Cumple | Se incluyen ocho palabras clave y ocho keywords. |
 | Introducción, objetivos, estado del arte, metodología, resultados, discusión y conclusiones | Cumple | Estructura completa y coherente con un estudio de viabilidad. |
 | Limitaciones y líneas futuras | Cumple | Se distinguen falta de procedencia clínica, ausencia de señal, NO-GO y requisitos hospitalarios. |
@@ -25,6 +25,8 @@ autorización del tutor, el informe de Turnitin ni la evaluación del tribunal.
 | Paquete Python reproducible | Cumple | `run_all.py`, dependencias fijadas, tests, notebook ejecutado, 35 tablas, 18 figuras, modelo, metadatos y manifiesto. La conclusión NO-GO se comprueba con tolerancia numérica entre sistemas operativos. |
 | Aplicación web segura | Cumple como prototipo | Streamlit carga el pipeline, valida entradas, genera alertas y se abstiene; no es una herramienta clínica. |
 | Enlace público auditable | Cumple | Código: <https://github.com/catrilaf/TFM-medicina-personalizada>. Aplicación: <https://tfm-medicina-personalizada.streamlit.app/>. La instancia se verificó con Python 3.12, cinco secciones navegables, abstención y alerta de consistencia. |
+| Diagnóstico del proceso generador de datos | Cumple | La subsección 6.14 de Resultados integra aleatorización de etiquetas, curva de aprendizaje y skill probabilístico; los cálculos proceden de `src/robustness.py`. |
+| Enlace directo de cada anexo a su código | Cumple | [`ANEXOS_Y_CODIGO.md`](ANEXOS_Y_CODIGO.md) relaciona los anexos A-L con scripts y salidas; la auditoría comprueba la existencia de los enlaces. |
 
 ## Defensa
 
