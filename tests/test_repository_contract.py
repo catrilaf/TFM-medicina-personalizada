@@ -6,6 +6,7 @@ from pathlib import Path
 import nbformat
 
 from tools.build_manifest import build_manifest
+from tools.verify_repository import ANNEX_SCRIPT_MAP
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -16,10 +17,19 @@ def test_publication_artifacts_exist():
         ROOT / "docs" / "INDICE_AUDITORIA.md",
         ROOT / "docs" / "REVISION_COMISION.md",
         ROOT / "docs" / "DESPLIEGUE_STREAMLIT.md",
+        ROOT / "docs" / "ANEXOS_Y_CODIGO.md",
         ROOT / "memoria" / "TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.docx",
         ROOT / "memoria" / "TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf",
     ]
     assert all(path.is_file() for path in required)
+
+    content = (ROOT / "docs" / "ANEXOS_Y_CODIGO.md").read_text(encoding="utf-8")
+    assert set(ANNEX_SCRIPT_MAP) == set("ABCDEFGHIJKL")
+    for annex, scripts in ANNEX_SCRIPT_MAP.items():
+        assert f"Anexo {annex}" in content
+        for script in scripts:
+            assert (ROOT / script).is_file()
+            assert f"../{script}" in content
 
 
 def test_generated_artifact_counts_and_decision(tmp_path):

@@ -4,6 +4,8 @@ Fecha de la verificación reproducible original: 24 de julio de 2026.
 
 Revisión del paquete para publicación académica: 19 de agosto de 2026.
 
+Revisión de cierre del acta y navegación de anexos: 20 de agosto de 2026.
+
 - Reconstrucción integral repetida con `python run_all.py`: correcta.
 - Las cifras de referencia coinciden con README, ficha del modelo y artefactos.
 - En distintos sistemas operativos los ensembles de árboles pueden resolver de
@@ -54,7 +56,7 @@ Revisión del paquete para publicación académica: 19 de agosto de 2026.
 - Entorno limpio temporal con Python 3.12.13.
 - Dependencias instaladas exclusivamente desde `requirements.txt`.
 - Ejecución: `python -m pytest -q`.
-- Resultado local de la revisión del 19 de agosto: **13 pruebas superadas de
+- Resultado local de la revisión del 20 de agosto: **13 pruebas superadas de
   13** con Python 3.12.13.
 - La memoria final se incluye en DOCX y PDF; no se publica una presentación.
 - El repositorio ignora cachés, entornos virtuales, secretos y documentos de
@@ -62,6 +64,8 @@ Revisión del paquete para publicación académica: 19 de agosto de 2026.
 - No se detectaron credenciales, claves privadas ni secretos en los archivos
   publicables mediante la auditoría de patrones previa a la publicación.
 - Inventario y huellas de integridad registrados en `MANIFEST_SHA256.csv`.
+- Correspondencia de los anexos A-L con enlaces directos a código y salidas
+  comprobada por `tools/verify_repository.py`.
 - El cuaderno usa el kernel portátil `python3` y puede reconstruirse, ejecutarse
   y exportarse con `python tools/render_notebook.py`.
 - La validación automática se define en `.github/workflows/ci.yml`.

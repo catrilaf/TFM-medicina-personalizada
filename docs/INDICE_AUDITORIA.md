@@ -8,6 +8,8 @@ indicado. La ruta abreviada está en
 
 La preparación personal para explicar el proyecto y confirmar la declaración
 de herramientas está en [`AUTORIA_Y_DEFENSA.md`](AUTORIA_Y_DEFENSA.md).
+La correspondencia completa entre los anexos A-L y el código está en
+[`ANEXOS_Y_CODIGO.md`](ANEXOS_Y_CODIGO.md).
 
 ## Memoria académica
 
@@ -68,3 +70,10 @@ de herramientas está en [`AUTORIA_Y_DEFENSA.md`](AUTORIA_Y_DEFENSA.md).
 [`legacy/`](../legacy/) conserva los scripts inicialmente recibidos para que el
 tribunal pueda distinguir el punto de partida de la versión modular. No son los
 puntos de ejecución recomendados y no deben confundirse con el pipeline final.
+
+## G. Correspondencia de los anexos
+
+Cada anexo de la memoria tiene al menos un enlace directo al script que
+implementa o verifica su contenido. La tabla completa y navegable está en
+[`ANEXOS_Y_CODIGO.md`](ANEXOS_Y_CODIGO.md). La auditoría automática comprueba
+que los anexos A-L y todos los scripts enlazados continúan presentes.

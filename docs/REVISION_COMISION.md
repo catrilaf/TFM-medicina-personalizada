@@ -10,6 +10,8 @@ el modelo experimental y la aplicación Streamlit.
 2. Consultar la [ficha del dataset](../data/DATASET_CARD.md) para distinguir
    procedencia técnica de procedencia clínica.
 3. Revisar la [ficha del modelo](../MODEL_CARD.md) y su decisión NO-GO.
+4. Abrir la [correspondencia entre anexos y código](ANEXOS_Y_CODIGO.md) para
+   acceder directamente al script que sustenta cada anexo de la memoria.
 
 ## 2. Reproducción mínima
 

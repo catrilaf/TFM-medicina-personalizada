@@ -25,9 +25,29 @@ REQUIRED_PATHS = [
     "outputs/models/modelo_experimental_full.joblib",
     "notebooks/01_estudio_completo_oncologia.ipynb",
     "reports/Estudio_Completo_Oncologia.html",
+    "docs/ANEXOS_Y_CODIGO.md",
     "memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.docx",
     "memoria/TFM_ENRIQUE_CATRILAF_ENTREGA_FINAL_VIU_2026.pdf",
 ]
+
+ANNEX_SCRIPT_MAP = {
+    "A": ["src/modeling.py", "src/metrics.py"],
+    "B": ["src/app_logic.py", "src/robustness.py"],
+    "C": ["run_all.py", "tools/verify_repository.py"],
+    "D": ["tools/rebuild_datasets_from_raw.py", "src/preprocessing.py"],
+    "E": ["src/preprocessing.py", "src/robustness.py", "src/app_logic.py"],
+    "F": ["src/preprocessing.py", "tools/rebuild_datasets_from_raw.py"],
+    "G": [
+        "src/config.py",
+        "tests/test_repository_contract.py",
+        "tests/test_smoke.py",
+    ],
+    "H": ["src/modeling.py", "src/metrics.py", "src/robustness.py"],
+    "I": ["app.py", "src/app_logic.py", "tests/test_streamlit_app.py"],
+    "J": ["tools/build_manifest.py", "tools/verify_repository.py"],
+    "K": ["tools/verify_repository.py", ".github/workflows/ci.yml"],
+    "L": ["run_all.py", "src/analysis.py", "src/figures.py"],
+}
 
 EXPECTED_TEXT = {
     "selected_model": "Random Forest",
@@ -106,6 +126,24 @@ def check_metrics(errors: list[str]) -> None:
         errors.append(f"La mejora frente al Dummy supera el margen NO-GO: {delta!r}")
 
 
+def check_annex_links(errors: list[str]) -> None:
+    index_path = ROOT / "docs" / "ANEXOS_Y_CODIGO.md"
+    if not index_path.is_file():
+        return
+    content = index_path.read_text(encoding="utf-8")
+    for annex, scripts in ANNEX_SCRIPT_MAP.items():
+        if f"Anexo {annex}" not in content:
+            errors.append(f"Falta Anexo {annex} en docs/ANEXOS_Y_CODIGO.md")
+        for script in scripts:
+            if not (ROOT / script).is_file():
+                errors.append(f"Falta script enlazado por Anexo {annex}: {script}")
+            expected_link = f"../{script}"
+            if expected_link not in content:
+                errors.append(
+                    f"Falta enlace directo de Anexo {annex} al script {script}"
+                )
+
+
 def main() -> None:
     errors: list[str] = []
     for relative in REQUIRED_PATHS:
@@ -120,6 +158,7 @@ def main() -> None:
         errors.append(f"Se esperaban 18 figuras y se encontraron {figure_count}")
 
     check_metrics(errors)
+    check_annex_links(errors)
     checked = check_manifest(errors)
 
     if errors:
@@ -132,6 +171,7 @@ def main() -> None:
     print(f"- Archivos con SHA-256 comprobado: {checked}")
     print(f"- Tablas reproducibles: {table_count}")
     print(f"- Figuras reproducibles: {figure_count}")
+    print(f"- Anexos con enlace directo a scripts: {len(ANNEX_SCRIPT_MAP)}")
     print("- Cifras principales dentro de tolerancia y decisión NO-GO conservada")
 
 
