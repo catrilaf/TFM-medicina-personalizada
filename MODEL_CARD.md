@@ -15,6 +15,12 @@
 - Entradas: edad, sexo, IMC, tabaquismo, tipo de cáncer, mutación, estadio, tamaño tumoral y metástasis.
 - Exclusiones: identificadores, variables redundantes y toda variable posterior a la decisión terapéutica.
 
+Configuración del Random Forest seleccionado: 160 árboles, profundidad máxima
+12, mínimo de 5 registros por hoja, `class_weight="balanced_subsample"`, semilla
+42 y ejecución determinista con `n_jobs=1`. Los hiperparámetros de los seis
+candidatos y la configuración de validación quedan registrados en
+[`outputs/models/model_metadata.json`](outputs/models/model_metadata.json).
+
 La etiqueta observada no representa necesariamente el tratamiento óptimo. El modelo no estima eficacia, toxicidad, supervivencia, efecto causal ni costo-efectividad.
 
 ## Evaluación

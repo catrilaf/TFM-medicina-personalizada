@@ -9,6 +9,9 @@ Revisión de cierre del acta y navegación de anexos: 20 de agosto de 2026.
 Actualización de los datos administrativos confirmados por el autor: 20 de
 agosto de 2026.
 
+Depuración final de archivos obsoletos y actualización del inventario: 21 de
+agosto de 2026.
+
 - Reconstrucción integral repetida con `python run_all.py`: correcta.
 - Las cifras de referencia coinciden con README, ficha del modelo y artefactos.
 - En distintos sistemas operativos los ensembles de árboles pueden resolver de

@@ -8,6 +8,8 @@ from pathlib import Path
 
 SEED = 42
 TEST_SIZE = 0.25
+CV_SPLITS = 5
+CV_REPEATS = 2
 TARGET = "chemotherapy_regimen"
 ID_COLUMN = "patient_id"
 

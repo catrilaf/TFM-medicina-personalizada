@@ -16,7 +16,17 @@ import sklearn
 from sklearn.base import clone
 
 from .clustering import run_clustering
-from .config import CORE_FEATURES, SEED, TARGET, project_paths
+from .config import (
+    CATEGORICAL_FEATURES,
+    CORE_FEATURES,
+    CV_REPEATS,
+    CV_SPLITS,
+    NUMERIC_FEATURES,
+    SEED,
+    TARGET,
+    TEST_SIZE,
+    project_paths,
+)
 from .data import (
     build_professor_sample,
     clinical_consistency_table,
@@ -363,6 +373,11 @@ def run_analysis(project_root: Path | str) -> dict[str, object]:
         else "No se demuestra señal predictiva útil: el modelo no supera los criterios preespecificados frente al azar."
     )
 
+    candidate_model_hyperparameters = {
+        name: pipeline.named_steps["modelo"].get_params(deep=False)
+        for name, pipeline in build_model_pipelines().items()
+    }
+
     metadata = {
         "generated_on": datetime.now(timezone.utc).date().isoformat(),
         "seed": SEED,
@@ -371,6 +386,24 @@ def run_analysis(project_root: Path | str) -> dict[str, object]:
         "classes": [str(item) for item in classes],
         "selected_model": selected_model,
         "selection_criterion": "Mayor F1 macro medio en CV repetida entre modelos no Dummy",
+        "validation_configuration": {
+            "holdout_fraction": TEST_SIZE,
+            "holdout_stratified": True,
+            "cv_splits": CV_SPLITS,
+            "cv_repeats": CV_REPEATS,
+            "cv_stratified": True,
+        },
+        "preprocessing_configuration": {
+            "categorical_features": CATEGORICAL_FEATURES,
+            "categorical_encoder": "OneHotEncoder(handle_unknown='ignore')",
+            "numeric_features": NUMERIC_FEATURES,
+            "numeric_scaler": "StandardScaler",
+            "fit_scope": "Dentro de cada Pipeline y cada fold",
+        },
+        "candidate_model_hyperparameters": candidate_model_hyperparameters,
+        "selected_model_hyperparameters": candidate_model_hyperparameters[
+            selected_model
+        ],
         "cv_f1_macro_mean": float(cv_selected["f1_macro_mean"]),
         "cv_f1_macro_std": float(cv_selected["f1_macro_std"]),
         "cv_balanced_accuracy_mean": float(cv_selected["balanced_accuracy_mean"]),
