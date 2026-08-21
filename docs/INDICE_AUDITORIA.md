@@ -41,7 +41,7 @@ La correspondencia completa entre los anexos A-L y el código está en
 | División train/holdout | [`src/modeling.py`](../src/modeling.py) | [`outputs/tables/10_manifest_split.csv`](../outputs/tables/10_manifest_split.csv) |
 | Seis modelos comparados | [`src/modeling.py`](../src/modeling.py) | [`outputs/tables/12_cv_resumen_modelos.csv`](../outputs/tables/12_cv_resumen_modelos.csv) |
 | Métricas multiclase | [`src/metrics.py`](../src/metrics.py) | [`outputs/tables/13_metricas_holdout_modelos.csv`](../outputs/tables/13_metricas_holdout_modelos.csv) |
-| Modelo serializado | [`src/modeling.py`](../src/modeling.py) | [`outputs/models/model_metadata.json`](../outputs/models/model_metadata.json) |
+| Modelo serializado e hiperparámetros | [`src/modeling.py`](../src/modeling.py) | [`outputs/models/model_metadata.json`](../outputs/models/model_metadata.json) |
 
 ## D. Robustez, incertidumbre y resultado NO-GO
 

@@ -41,11 +41,11 @@ El notebook invoca el mismo pipeline que `python run_all.py`. La ejecución comi
     ),
     code(
         """
-from pathlib import Path
-import json
 import sys
+from pathlib import Path
+
 import pandas as pd
-from IPython.display import Image, display, Markdown
+from IPython.display import Image, Markdown, display
 
 ROOT = Path.cwd().resolve()
 if not (ROOT / "run_all.py").exists():

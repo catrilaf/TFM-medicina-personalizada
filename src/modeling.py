@@ -25,6 +25,8 @@ from sklearn.tree import DecisionTreeClassifier
 from .config import (
     CATEGORICAL_FEATURES,
     CORE_FEATURES,
+    CV_REPEATS,
+    CV_SPLITS,
     NUMERIC_FEATURES,
     SEED,
     TEST_SIZE,
@@ -101,8 +103,8 @@ def split_holdout(df: pd.DataFrame, target: str):
 def cross_validate_models(
     X_train: pd.DataFrame,
     y_train: pd.Series,
-    n_splits: int = 5,
-    n_repeats: int = 2,
+    n_splits: int = CV_SPLITS,
+    n_repeats: int = CV_REPEATS,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     scoring = {
         "accuracy": "accuracy",

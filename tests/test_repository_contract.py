@@ -48,6 +48,22 @@ def test_generated_artifact_counts_and_decision(tmp_path):
     assert summary["abstention_rate_holdout"] == 1.0
     assert metadata["signal_gate_passed"] is False
     assert metadata["clinical_go"] is False
+    assert metadata["validation_configuration"] == {
+        "holdout_fraction": 0.25,
+        "holdout_stratified": True,
+        "cv_splits": 5,
+        "cv_repeats": 2,
+        "cv_stratified": True,
+    }
+    assert metadata["selected_model_hyperparameters"]["n_estimators"] == 160
+    assert set(metadata["candidate_model_hyperparameters"]) == {
+        "Dummy mayoría",
+        "Dummy estratificado",
+        "Regresión logística",
+        "Árbol CART",
+        "Random Forest",
+        "Extra Trees",
+    }
 
     (tmp_path / "entregable.txt").write_text("contenido", encoding="utf-8")
     (tmp_path / ".coverage").write_text("cache", encoding="utf-8")
