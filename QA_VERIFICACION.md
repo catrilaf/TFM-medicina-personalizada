@@ -6,6 +6,9 @@ Revisión del paquete para publicación académica: 19 de agosto de 2026.
 
 Revisión de cierre del acta y navegación de anexos: 20 de agosto de 2026.
 
+Actualización de los datos administrativos confirmados por el autor: 20 de
+agosto de 2026.
+
 - Reconstrucción integral repetida con `python run_all.py`: correcta.
 - Las cifras de referencia coinciden con README, ficha del modelo y artefactos.
 - En distintos sistemas operativos los ensembles de árboles pueden resolver de
@@ -66,13 +69,15 @@ Revisión de cierre del acta y navegación de anexos: 20 de agosto de 2026.
 - Inventario y huellas de integridad registrados en `MANIFEST_SHA256.csv`.
 - Correspondencia de los anexos A-L con enlaces directos a código y salidas
   comprobada por `tools/verify_repository.py`.
+- Portada confirmada por el autor: director de TFM, Sinuhe Martinez Rodriguez;
+  primera convocatoria; fecha, septiembre de 2026.
 - El cuaderno usa el kernel portátil `python3` y puede reconstruirse, ejecutarse
   y exportarse con `python tools/render_notebook.py`.
 - La validación automática se define en `.github/workflows/ci.yml`.
 - `ruff check` finaliza sin avisos sobre el código activo y las utilidades.
 - `pip-audit -r requirements.txt` no informa vulnerabilidades conocidas; se
   actualizó `nbconvert` a 7.17.1.
-- El PDF final conserva 87 páginas A4 y se exportó como documento etiquetado;
+- El PDF final conserva 88 páginas A4 y se exportó como documento etiquetado;
   la auditoría DOCX no presenta incidencias de accesibilidad de severidad alta.
 
 ## Dictamen

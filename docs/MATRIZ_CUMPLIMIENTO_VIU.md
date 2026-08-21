@@ -7,7 +7,7 @@ autorización del tutor, el informe de Turnitin ni la evaluación del tribunal.
 
 | Requisito | Estado | Evidencia u observación |
 |---|---|---|
-| Portada con título, fecha, titulación, curso, estudiante, tutor y convocatoria | Cumple | Portada de la memoria, página 1. El autor debe confirmar que los datos administrativos siguen vigentes el día del depósito. |
+| Portada con título, fecha, titulación, curso, estudiante, tutor y convocatoria | Cumple | Portada de la memoria, página 1. El autor confirmó: director de TFM, Sinuhe Martinez Rodriguez; primera convocatoria; septiembre de 2026. |
 | Índice general con páginas | Cumple | Índice automático en las páginas iniciales. |
 | Índices de tablas y figuras | Cumple | Ambos índices están incluidos y numerados. |
 | Resumen de 200–300 palabras | Cumple | El recuento automatizado de la versión final obtiene 293 palabras en español. |
